@@ -22,8 +22,10 @@
   ],
   "devDependencies": {
     "degree": "~1.0.8",
+    "rent": "~2.0.0",
     "standard": "^6.0.0",
-    "tape": "^4.0.0"
+    "tape": "^4.0.0",
+    "value-pipe": "~1.0.0"
   },
   "files": [
     "index.js"
