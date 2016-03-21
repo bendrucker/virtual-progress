@@ -1,7 +1,7 @@
 {
   "name": "virtual-progress",
   "main": "index.js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Animated, randomized progress bar built with virtual-dom",
   "license": "MIT",
   "repository": "bendrucker/virtual-progress",
