@@ -49,7 +49,6 @@ Progress.start = function start (state) {
   state.active.set(true)
 }
 
-
 Progress.stop = function stop (state) {
   state.active.set(false)
 }
