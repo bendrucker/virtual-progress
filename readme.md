@@ -13,31 +13,38 @@ $ npm install --save virtual-progress
 ## Usage
 
 ```js
-var virtualProgress = require('virtual-progress')
+var Progress = require('virtual-progress')
+var state = Progress()
 
-virtualProgress('input')
-//=> output
+var vtree = Progress.render(state)
 ```
 
 ## API
 
-#### `virtualProgress(input, [options])` -> `output`
+#### `Progress([data])` -> `function`
 
-##### input
+##### data
 
 *Required*  
-Type: `string`
+Type: `object`
 
-Lorem ipsum.
+Initial state data for the component. Returns an observable state (`{active, value}`.
 
-##### options
+#### `Progress.start(state)` -> `undefined`
 
-###### foo
+Starts the progress meter, ticking the `value` every 200ms.
 
-Type: `boolean`  
-Default: `false`
+#### `Progress.stop(state)` -> `undefined`
 
-Lorem ipsum.
+Stops the progress meter.
+
+#### `Progress.reset` -> `undefined`
+
+Stops the progress meter and resets it to `{value: 0}`.
+
+#### `Progress.done` -> `undefined`
+
+Animates the progress meter to its final state (`{value: 1, active: false}`).
 
 
 ## License
