@@ -68,7 +68,7 @@ Progress.render = function render (state, options) {
     display: 'block'
   }
 
-  return h('progress-meter', {style: style}, renderContainer(options, [
+  return h('progress-meter', extend({style: style}, options), renderContainer(options, [
     renderBar(state, options)
   ]))
 }
