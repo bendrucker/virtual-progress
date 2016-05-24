@@ -25,7 +25,7 @@ var vtree = Progress.render(state)
 
 ##### data
 
-*Required*  
+*Required*
 Type: `object`
 
 Initial state data for the component. Returns an observable state (`{active, value}`.
@@ -38,14 +38,19 @@ Starts the progress meter, ticking the `value` every 200ms.
 
 Stops the progress meter.
 
-#### `Progress.reset` -> `undefined`
+#### `Progress.reset(state)` -> `undefined`
 
 Stops the progress meter and resets it to `{value: 0}`.
 
-#### `Progress.done` -> `undefined`
+#### `Progress.done(state)` -> `undefined`
 
 Animates the progress meter to its final state (`{value: 1, active: false}`).
 
+#### `Progress.onComplete(state, listener)` -> `function`
+
+The listener is called when the progress bar's value is 1 and its transition ends.
+
+Returns an unlisten function.
 
 ## License
 

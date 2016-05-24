@@ -1,14 +1,14 @@
 'use strict'
 
-var Struct = require('observ-struct')
+var State = require('dover')
 var Observ = require('observ')
 var watch = require('observ/watch')
 var increment = require('observ-increment')
 var createStore = require('weakmap-shim/create-store')
-
+var transitionEvent = require('transition-event')
+var Event = require('weakmap-event')
 var compare = require('pare')
 var extend = require('xtend')
-
 var h = require('virtual-dom/h')
 
 module.exports = Progress
@@ -18,9 +18,12 @@ var store = createStore()
 function Progress (data) {
   data = data || {}
 
-  var state = Struct({
+  var state = State({
     value: Observ(data.value || 0),
-    active: Observ(data.active || false)
+    active: Observ(data.active || false),
+    channels: {
+      transitionEnd: transitionEnd
+    }
   })
 
   watch(state.active, compare(function onActive (previous, current) {
@@ -29,6 +32,14 @@ function Progress (data) {
   }))
 
   return state
+}
+
+var CompleteEvent = Event()
+Progress.onComplete = CompleteEvent.listen
+
+function transitionEnd (state) {
+  if (state.value() !== 1) return
+  CompleteEvent.broadcast(state, {})
 }
 
 function tick (state) {
@@ -54,11 +65,13 @@ Progress.stop = function stop (state) {
 }
 
 Progress.reset = function reset (state) {
-  state.set({value: 0, active: false})
+  state.active.set(false)
+  state.value.set(0)
 }
 
 Progress.done = function done (state) {
-  state.set({value: 1, active: false})
+  state.active.set(false)
+  state.value.set(1)
 }
 
 Progress.render = function render (state, options) {
@@ -84,13 +97,17 @@ function renderContainer (options, children) {
 }
 
 function renderBar (state, options) {
-  var defaults = {
+  var style = {
     display: 'block',
     height: '100%',
     transform: 'translate3d(' + (state.value - 1) * 100 + '%, 0, 0)',
     backgroundColor: 'black',
     transition: 'transform .2s linear'
   }
+  var bar = {
+    style: extend(style, options.bar || {}),
+    'ev-transitionend': transitionEvent.end(state.channels.transitionEnd)
+  }
 
-  return h('progress-bar', {style: extend(defaults, options.bar || {})})
+  return h('progress-bar', bar)
 }
