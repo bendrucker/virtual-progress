@@ -68,11 +68,13 @@ Progress.stop = function stop (state) {
 }
 
 Progress.reset = function reset (state) {
-  state.set({value: 0, active: false})
+  state.active.set(false)
+  state.value.set(0)
 }
 
 Progress.done = function done (state) {
-  state.set({value: 1, active: false})
+  state.active.set(false)
+  state.value.set(1)
 }
 
 Progress.render = function render (state, options) {
