@@ -22,21 +22,26 @@
   ],
   "devDependencies": {
     "degree": "~1.0.8",
+    "dispatch-event": "~1.0.0",
     "rent": "~2.0.0",
     "standard": "^6.0.0",
     "tape": "^4.0.0",
+    "thermometer": "~1.4.0",
     "value-pipe": "~1.0.0"
   },
   "files": [
     "index.js"
   ],
   "dependencies": {
+    "dom-delegator": "~13.1.0",
+    "dover": "~1.2.0",
     "observ": "~0.2.0",
     "observ-increment": "~1.0.1",
-    "observ-struct": "~6.0.0",
     "pare": "~1.0.0",
     "preflex": "~1.0.1",
+    "value-event": "~5.1.1",
     "virtual-dom": "~2.1.1",
+    "weakmap-event": "~2.0.6",
     "weakmap-shim": "~1.1.0",
     "xtend": "~4.0.1"
   }
