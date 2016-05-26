@@ -33,13 +33,12 @@
     "index.js"
   ],
   "dependencies": {
-    "dom-delegator": "~13.1.0",
     "dover": "~1.2.0",
     "observ": "~0.2.0",
     "observ-increment": "~1.0.1",
     "pare": "~1.0.0",
     "preflex": "~1.0.1",
-    "value-event": "~5.1.1",
+    "transition-event": "~1.0.0",
     "virtual-dom": "~2.1.1",
     "weakmap-event": "~2.0.6",
     "weakmap-shim": "~1.1.0",

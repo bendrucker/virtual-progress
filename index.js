@@ -5,14 +5,11 @@ var Observ = require('observ')
 var watch = require('observ/watch')
 var increment = require('observ-increment')
 var createStore = require('weakmap-shim/create-store')
-var valueEvent = require('value-event/value')
+var transitionEvent = require('transition-event')
 var Event = require('weakmap-event')
 var compare = require('pare')
 var extend = require('xtend')
 var h = require('virtual-dom/h')
-var Delegator = require('dom-delegator')
-
-Delegator().listenTo('transitionend')
 
 module.exports = Progress
 
@@ -109,7 +106,7 @@ function renderBar (state, options) {
   }
   var bar = {
     style: extend(style, options.bar || {}),
-    'ev-transitionend': valueEvent(state.channels.transitionend)
+    'ev-transitionend': transitionEvent.end(state.channels.transitionend)
   }
 
   return h('progress-bar', bar)
