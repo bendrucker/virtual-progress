@@ -1,4 +1,4 @@
-# virtual-progress [![Build Status](https://travis-ci.org/bendrucker/virtual-progress.svg?branch=master)](https://travis-ci.org/bendrucker/virtual-progress)
+# virtual-progress [![Build Status](https://travis-ci.org/bendrucker/virtual-progress.svg?branch=master)](https://travis-ci.org/bendrucker/virtual-progress) [![Greenkeeper badge](https://badges.greenkeeper.io/bendrucker/virtual-progress.svg)](https://greenkeeper.io/)
 
 > Animated, randomized progress bar built with virtual-dom
 
